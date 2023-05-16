@@ -1,0 +1,5 @@
+*.xz
+*.swp
+*.img
+*.sha256
+out
