@@ -1,0 +1,2 @@
+[raspberrypies]
+navi.local ansible_host=navi.local

@@ -1,0 +1,19 @@
+---
+- name: Get hyperion GPG key
+  ansible.builtin.get_url:
+    url: https://apt.hyperion-project.org/hyperion.pub.key
+    dest: /usr/share/keyrings/hyperion.pub.asc
+    mode: '0655'
+  become: true
+
+- name: Add hyperion apt repo
+  ansible.builtin.apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/hyperion.pub.asc] https://apt.hyperion-project.org/ bullseye main
+    state: present
+  become: true
+
+- name: Install hyperion
+  ansible.builtin.apt:
+    name: hyperion
+    update_cache: yes
+  become: true
